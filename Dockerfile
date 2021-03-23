@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu AS build
 
 # Set timezone
 RUN apt-get update && echo "Pacific/Auckland" | tee /etc/timezone && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends tzdata
@@ -11,3 +11,6 @@ RUN mkdir ~/lib && cd ~/lib && svn checkout https://svn.blender.org/svnroot/bf-b
 RUN apt-get install -y python3 python3-pip
 
 RUN cd ~/blender && make update && make
+
+FROM ubuntu
+COPY --from=build /root/build_linux/bin/blender /blender
