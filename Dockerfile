@@ -13,4 +13,4 @@ RUN apt-get install -y python3 python3-pip
 RUN cd ~/blender && make update && make
 
 FROM ubuntu
-COPY --from=build /root/build_linux/bin/blender /blender
+COPY --from=build /root/build_linux /blender
