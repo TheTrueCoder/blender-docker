@@ -8,4 +8,6 @@ RUN apt-get install -y -qq build-essential git subversion cmake libx11-dev libxx
 RUN cd ~ && git clone https://github.com/blender/blender.git
 RUN mkdir ~/lib && cd ~/lib && svn checkout https://svn.blender.org/svnroot/bf-blender/trunk/lib/linux_centos7_x86_64
 
+RUN apt-get install -y python3 python3-pip
+
 RUN cd ~/blender && make update && make
