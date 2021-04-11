@@ -14,6 +14,6 @@ RUN cd ~/blender && make update && make
 
 FROM ubuntu
 # Blender deps
-RUN apt-get update && apt-get install $(apt-cache depends blender | grep Depends | sed "s/.*ends:\ //" | tr '\n' ' ')
+RUN apt-get update && apt-get install -y libavcodec58 libavdevice58 libavformat58 libavutil56 libboost-locale1.71.0 libc6 libfftw3-double3 libfreetype6 libgcc-s1 libgl1 libglew2.1 libgmp10 libgomp1 libilmbase24 libjpeg8 liblzo2-2 libopenal1 libopencolorio1v5 libopenexr24 libopenimageio2.1 libopenjp2-7 libopenshadinglanguage1.10 libopenvdb7.1 libosdcpu3.4.0 libpcre3 libpng16-16 libpotrace0 libpython3.8 libsndfile1 libspnav0 libstdc++6 libswscale5 libtbb2 libtiff5 libx11-6 libxfixes3 libxi6 libxml2 libxrender1 libxxf86vm1 openimagedenoise zlib1g python3 python3-gi shared-mime-info llvm-10
 
 COPY --from=build /root/build_linux/bin /blender
